@@ -107,7 +107,7 @@ const EmployeePage = () => {
     loadGeofences();
 
     let watchId;
-    if (locationSupported && !isMockMode) {
+    if (locationSupported) {
       watchId = navigator.geolocation.watchPosition(
         (pos) => {
           const loc = {
@@ -167,6 +167,7 @@ const EmployeePage = () => {
         },
         { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
       );
+    }
     return () => {
       if (watchId) navigator.geolocation.clearWatch(watchId);
     };
